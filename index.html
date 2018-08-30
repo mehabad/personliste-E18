@@ -13,7 +13,7 @@
 <body>
     <section class="data-container"></section>
 
-    <template class="data-templete">
+    <template class="data-template">
         <article>
             <h2> </h2>
             <p class="data-github"></p>
@@ -21,9 +21,10 @@
             </template>
 
     <script>
-        document.addEventListener("DOMcontentLoaded", hentJson);
+        document.addEventListener("DOMContentLoaded", hentJson);
 
         let personer;
+
         async function hentJson() {
             let myJson = await fetch("personliste.json");
             personer = await myJson.json();
@@ -35,17 +36,19 @@
 
 
         function visPersoner() {
+
             let modtager = document.querySelector(".data-container");
             let temp = document.querySelector(".data-template");
 
             //løb personlisten igennem og lav en klon
             personer.forEach(person => {
-                let klon = temp.cloneNode(true).constant;
+                console.log(person);
+                let klon = temp.cloneNode(true).content;
                 klon.querySelector("h2").textContent = person.navn;
                 klon.querySelector(".data-github").textContent = person.navn;
                 //placer klon i html
 
-                modatger.appendChild(klon);
+                modtager.appendChild(klon);
 
 
 

@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>hent JSON</title>
+    <meta name="viewport" content="initial-scale=1.0">
+
+</head>
+
+<body>
+    <section class="data-container"></section>
+
+    <template class="data-templete">
+        <article>
+            <h2> </h2>
+            <p class="data-github"></p>
+            </article>
+            </template>
+
+    <script>
+        document.addEventListener("DOMcontentLoaded", hentJson);
+
+        let personer;
+        async function hentJson() {
+            let myJson = await fetch("personliste.json");
+            personer = await myJson.json();
+
+
+            console.log(personer);
+            visPersoner();
+        }
+
+
+        function visPersoner() {
+            let modtager = document.querySelector(".data-container");
+            let temp = document.querySelector(".data-template");
+
+            //løb personlisten igennem og lav en klon
+            personer.forEach(person => {
+                let klon = temp.cloneNode(true).constant;
+                klon.querySelector("h2").textContent = person.navn;
+                klon.querySelector(".data-github").textContent = person.navn;
+                //placer klon i html
+
+                modatger.appendChild(klon);
+
+
+
+            })
+
+
+
+
+
+
+        }
+
+    </script>
+
+</body>
+</html
